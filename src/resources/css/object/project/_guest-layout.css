@@ -1,0 +1,44 @@
+.p-guest-layout {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 1.5rem;
+}
+
+@media (min-width: 640px) {
+
+    .p-guest-layout {
+        justify-content: center;
+        padding-top: 0;
+    }
+}
+
+.p-guest-layout__logo a {
+    display: inline-block;
+}
+
+.p-guest-layout__logo-text {
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: #2563eb;
+    text-decoration: none;
+}
+
+.p-guest-layout__card {
+    width: 100%;
+    margin-top: 1.5rem;
+    padding: 1.5rem 1.5rem;
+    background-color: #fff;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+}
+
+@media (min-width: 640px) {
+
+    .p-guest-layout__card {
+        max-width: 28rem;
+        border-radius: 0.5rem;
+        padding: 1.5rem;
+    }
+}

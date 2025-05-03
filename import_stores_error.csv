@@ -1,0 +1,6 @@
+店舗名,地域,ジャンル,店舗概要,画像URL
+地域エラー店,北海道,寿司,地域が不正です。,https://coachtech-matter.s3-ap-northeast-1.amazonaws.com/image/sushi.jpg
+ジャンルエラー店,東京都,中華,ジャンルが不正です。,https://coachtech-matter.s3-ap-northeast-1.amazonaws.com/image/yakiniku.jpg
+画像URL形式エラー店,大阪府,焼肉,画像URLがURL形式ではありません。,invalid-url-format
+画像拡張子エラー店,福岡県,ラーメン,画像URLの拡張子が不正です。,https://example.com/image.gif
+必須項目欠落店,,居酒屋,地域とジャンルが空です。,https://coachtech-matter.s3-ap-northeast-1.amazonaws.com/image/izakaya.jpg

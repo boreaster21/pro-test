@@ -1,0 +1,123 @@
+.c-store-card {
+    background-color: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+}
+
+.c-store-card__image {
+    width: 100%;
+    height: 12rem;
+    object-fit: cover;
+}
+
+.c-store-card__content {
+    padding: 1rem;
+}
+
+.c-store-card__header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 0.25rem;
+    flex-wrap: nowrap;
+}
+
+.c-store-card__name {
+    font-size: 1.125rem;
+    font-weight: 700;
+    margin-right: 0.5rem;
+}
+
+.c-store-card__rating {
+    font-size: 0.875rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.c-store-card__rating-stars {
+    color: #f59e0b;
+    margin-right: 0.25rem;
+}
+
+.c-store-card__rating-text {}
+
+.c-store-card__rating-text .u-text-gray-600 {
+    color: #4b5563;
+}
+
+.c-store-card__rating-text--no-rating {
+    color: #4b5563;
+    font-size: 0.875rem;
+}
+
+.c-store-card__tags {
+    font-size: 0.875rem;
+    color: #4b5563;
+    margin-bottom: 0.5rem;
+}
+
+.c-store-card__tag {
+    margin-right: 0.25rem;
+}
+
+.c-store-card__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0.5rem;
+}
+
+.c-store-card__details-link {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.75rem;
+    background-color: #3b82f6;
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 500;
+    border-radius: 0.25rem;
+    text-decoration: none;
+    transition: background-color 0.2s;
+}
+
+.c-store-card__details-link:hover {
+    background-color: #1d4ed8;
+}
+
+.c-store-card__favorite-button {
+    padding: 0.25rem;
+    border-radius: 9999px;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.c-store-card__favorite-button svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    fill: currentColor;
+}
+
+.c-store-card__favorite-button[data-is-favorite="true"] {
+    color: #ef4444;
+}
+
+.c-store-card__favorite-button[data-is-favorite="false"] {
+    color: #9ca3af;
+}
+
+.c-store-card__favorite-button:hover {
+    color: #ef4444;
+}
+
+.u-mr-1 {
+    margin-right: 0.25rem;
+}
+
+.u-text-gray-600 {
+    color: #4b5563;
+}

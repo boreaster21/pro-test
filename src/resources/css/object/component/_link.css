@@ -1,0 +1,20 @@
+.c-link {
+    color: #3b82f6;
+    text-decoration: underline;
+    transition: color 0.15s ease-in-out;
+}
+
+.c-link:hover {
+    color: #1d4ed8;
+}
+
+.c-link:focus {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+    box-shadow: 0 0 0 2px #fff, 0 0 0 4px rgba(59, 130, 246, 0.5);
+    border-radius: 0.25rem;
+}
+
+.c-link--sm {
+    font-size: 0.875rem;
+}

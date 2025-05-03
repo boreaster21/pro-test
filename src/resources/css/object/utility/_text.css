@@ -1,0 +1,43 @@
+.u-text-gray-600 {
+    color: #4b5563;
+}
+
+.u-text-xs {
+    font-size: 0.75rem;
+}
+
+.u-text-sm {
+    font-size: 0.875rem;
+}
+
+.u-text-base {
+    font-size: 1rem;
+}
+
+.u-text-lg {
+    font-size: 1.125rem;
+}
+
+.u-text-xl {
+    font-size: 1.25rem;
+}
+
+.u-font-medium {
+    font-weight: 500;
+}
+
+.u-font-semibold {
+    font-weight: 600;
+}
+
+.u-font-bold {
+    font-weight: 700;
+}
+
+.u-text-center {
+    text-align: center;
+}
+
+.u-text-right {
+    text-align: right;
+}

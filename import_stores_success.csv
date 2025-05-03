@@ -1,0 +1,4 @@
+店舗名,地域,ジャンル,店舗概要,画像URL
+成功テスト寿司,東京都,寿司,正常にインポートされる寿司屋のデータです。新鮮なネタが自慢！,https://coachtech-matter.s3-ap-northeast-1.amazonaws.com/image/sushi.jpg
+成功テスト焼肉,大阪府,焼肉,正常にインポートされる焼肉店のデータです。A5和牛あります。,https://coachtech-matter.s3-ap-northeast-1.amazonaws.com/image/yakiniku.jpg
+成功テストラーメン,福岡県,ラーメン,正常にインポートされるラーメン屋のデータです。濃厚豚骨！,https://coachtech-matter.s3-ap-northeast-1.amazonaws.com/image/ramen.jpg

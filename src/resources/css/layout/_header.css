@@ -1,0 +1,145 @@
+.l-header {
+    background-color: #fff;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+}
+
+.l-header__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 4rem;
+}
+
+.l-header__logo a {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #2563eb;
+    padding-left: 1rem;
+    text-decoration: none;
+}
+
+.l-header__nav {
+    display: flex;
+    align-items: center;
+}
+
+.l-header__search-sort-bar {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    border-radius: 0.375rem;
+    padding: 0.5rem;
+    border: 1px solid #e5e7eb;
+}
+
+.l-header__search-sort-bar>*:not(:last-child) {
+    margin-right: 0.5rem;
+}
+
+.l-header__search-form {
+    display: flex;
+    align-items: center;
+}
+
+
+.l-header__auth-links {
+    display: none;
+}
+
+@media (min-width: 640px) {
+
+    .l-header__auth-links {
+        display: flex;
+        align-items: center;
+        margin-left: 1.5rem;
+    }
+
+    .l-header__auth-links>*:not(:last-child) {
+        margin-right: 1rem;
+    }
+}
+
+.l-header__divider {
+    color: #d1d5db;
+}
+
+.l-header__search-input-wrapper {
+    position: relative;
+}
+
+.l-header__search-icon {
+    position: absolute;
+    inset: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    padding-left: 0.5rem;
+    pointer-events: none;
+}
+
+.l-header__search-icon svg {
+    height: 1rem;
+    width: 1rem;
+    color: #9ca3af;
+}
+
+.l-header select,
+.l-header input[type="text"] {
+    height: 2rem;
+    font-size: 0.875rem;
+    border-radius: 0.375rem;
+    border: 1px solid #d1d5db;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.l-header select {
+    padding-left: 0.5rem;
+    padding-right: 2rem;
+
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+    background-position: right 0.5rem center;
+    background-repeat: no-repeat;
+    background-size: 1.5em 1.5em;
+}
+
+.l-header input[type="text"] {
+    padding-left: 2rem;
+    padding-right: 0.5rem;
+}
+
+.l-header select:focus,
+.l-header input[type="text"]:focus {
+    border-color: #a5b4fc;
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+    --tw-ring-color: #c7d2fe;
+    box-shadow: 0 0 0 2px var(--tw-ring-color);
+}
+
+.l-header__auth-button {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.375rem 0.75rem;
+    border: 1px solid transparent;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    font-weight: 500;
+    border-radius: 0.375rem;
+    color: #6b7280;
+    background-color: #fff;
+    transition: color 0.15s ease-in-out;
+    cursor: pointer;
+}
+
+.l-header__auth-button:hover {
+    color: #374151;
+}
+
+.l-header__auth-button:focus {
+    outline: none;
+}

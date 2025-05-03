@@ -1,0 +1,82 @@
+.p-admin-import__title {
+    font-weight: 600;
+    font-size: 1.25rem;
+    color: #1f2937;
+    line-height: 1.75rem;
+}
+
+.p-admin-import__container {
+    max-width: 42rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.p-admin-import__card {
+    background-color: #fff;
+    overflow: hidden;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    color: #111827;
+}
+
+@media (min-width: 640px) {
+
+    .p-admin-import__card {
+        border-radius: 0.5rem;
+    }
+}
+
+.p-admin-import__form {}
+
+.p-admin-import__file-input-group {
+    margin-bottom: 1rem;
+}
+
+.p-admin-import__file-input {
+    display: block;
+    width: 100%;
+    margin-top: 0.25rem;
+    font-size: 0.875rem;
+    color: #6b7280;
+}
+
+.p-admin-import__file-input::file-selector-button {
+    margin-right: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    border: none;
+    font-size: 0.875rem;
+    font-weight: 600;
+    background-color: #eef2ff;
+    color: #4338ca;
+    transition: background-color 0.15s ease-in-out;
+    cursor: pointer;
+}
+
+.p-admin-import__file-input::file-selector-button:hover {
+    background-color: #e0e7ff;
+}
+
+.p-admin-import__help-text {
+    margin-top: 0.25rem;
+    font-size: 0.75rem;
+    color: #6b7280;
+}
+
+.p-admin-import__submit-wrapper {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.c-button--indigo {
+    background-color: #4f46e5;
+    color: #fff;
+}
+
+.c-button--indigo:hover {
+    background-color: #4338ca;
+}
+
+.c-button--indigo:focus {
+    box-shadow: 0 0 0 2px #fff, 0 0 0 4px rgba(99, 102, 241, 0.5);
+}

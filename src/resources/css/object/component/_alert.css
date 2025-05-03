@@ -1,0 +1,32 @@
+.c-alert {
+    margin-bottom: 1rem;
+    font-weight: 500;
+    font-size: 0.875rem;
+    border-radius: 0.25rem;
+    padding: 0.75rem;
+    border: 1px solid transparent;
+}
+
+.c-alert--success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+
+.c-alert--error {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+
+.c-alert__title {
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.c-alert ul {
+    list-style: disc;
+    padding-left: 1.25rem;
+}
+
+.c-alert ul li {}

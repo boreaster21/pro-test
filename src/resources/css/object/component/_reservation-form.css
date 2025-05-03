@@ -1,0 +1,64 @@
+.c-reservation-form {}
+
+.c-input--date {
+}
+
+.c-input--time {
+}
+
+.c-input--number {
+}
+
+.c-reservation-form__confirmation {
+    background-color: #e0f2fe;
+    border: 1px solid #bae6fd;
+    color: #075985;
+    padding: 0.75rem 1rem;
+    border-radius: 0.375rem;
+    margin-bottom: 1rem;
+    font-size: 0.875rem;
+}
+
+.c-reservation-form__confirmation-title {
+    font-weight: 700;
+}
+
+.c-reservation-form__confirmation-list {
+    margin-top: 0.5rem;
+    list-style: disc;
+    padding-left: 1.25rem;
+}
+
+.c-reservation-form__confirmation-item {
+}
+
+.c-reservation-form__submit-button {
+    display: inline-flex;
+    justify-content: center;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    border: 1px solid transparent;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    font-size: 0.875rem;
+    font-weight: 500;
+    border-radius: 0.375rem;
+    color: #fff;
+    background-color: #2563eb;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.15s ease-in-out;
+}
+
+.c-reservation-form__submit-button:hover {
+    background-color: #1d4ed8;
+}
+
+.c-reservation-form__submit-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #fff, 0 0 0 4px rgba(59, 130, 246, 0.5);
+}
+
+.c-reservation-form__submit-button:disabled {
+    opacity: 0.5;
+    cursor: default;
+} 
