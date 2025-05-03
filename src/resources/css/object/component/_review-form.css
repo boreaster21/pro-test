@@ -1,6 +1,4 @@
-
-.c-review-form {
-}
+.c-review-form {}
 
 .c-review-form__grid {
     display: grid;
@@ -40,8 +38,7 @@
     margin-bottom: 1rem;
 }
 
-.c-review-form__label {
-}
+.c-review-form__label {}
 
 .c-review-form__rating-stars {
     display: flex;
@@ -61,14 +58,17 @@
 
 .c-review-form__rating-star.is-active,
 .c-review-form__rating-star:hover {
-    color: #f59e0b;
+    color: #3b82f6;
+    font-weight: bold;
 }
 
-.c-review-form__rating-input {
+.c-review-form__rating-star:focus {
+    outline: none;
 }
 
-.c-review-form__error {
-}
+.c-review-form__rating-input {}
+
+.c-review-form__error {}
 
 .c-review-form__comment-group {
     margin-bottom: 1rem;

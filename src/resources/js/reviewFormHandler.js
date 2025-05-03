@@ -27,7 +27,9 @@ export function initializeReviewForm() {
     function updateStars(value) {
         stars.forEach(star => {
             const starValue = parseInt(star.dataset.value);
-            star.classList.toggle('is-active', starValue <= value);
+            const isActive = starValue <= value;
+            star.classList.toggle('is-active', isActive);
+            star.textContent = isActive ? '★' : '☆';
         });
     }
 

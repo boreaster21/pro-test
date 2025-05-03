@@ -12,14 +12,13 @@ async function handleFavoriteButtonClick(event) {
     console.log('Favorite button clicked (delegated from module)', button);
 
     const storeId = button.dataset.storeId;
-    let isFavorite = button.dataset.isFavorite === 'true';
-    const icon = button.querySelector('svg');
+    let isFavorite = button.classList.contains('is-favorite-active');
     const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
-    const url = isFavorite ? `/favorites/${storeId}` : `/favorites/${storeId}`;
+    const url = `/favorites/${storeId}`;
     const method = isFavorite ? 'DELETE' : 'POST';
 
-    console.log(`Sending request: ${method} ${url}, isFavorite: ${isFavorite}`);
+    console.log(`Sending request: ${method} ${url}, Current state (has active class): ${isFavorite}`);
 
     try {
         const response = await fetch(url, {
@@ -42,24 +41,26 @@ async function handleFavoriteButtonClick(event) {
         const data = await response.json();
         console.log('Favorite request successful, data:', data);
 
-        isFavorite = !isFavorite;
-        button.dataset.isFavorite = isFavorite.toString();
+        const newStateIsFavorite = !isFavorite;
 
-        // SVG アイコンのクラス切り替えは不要になったため削除 (CSS で data-is-favorite を基に制御)
-        // if (icon) {
-        //     icon.classList.toggle('text-red-500', isFavorite);
-        //     icon.classList.toggle('text-gray-400', !isFavorite);
-        // } else {
-        //     console.warn('SVG icon not found inside the button.');
-        // }
+        console.log(`[Timing] Before requestAnimationFrame. Button should be active: ${newStateIsFavorite}`);
+
+        requestAnimationFrame(() => {
+            console.log(`[Timing] Inside requestAnimationFrame. Toggling active class based on: ${newStateIsFavorite}`);
+            button.classList.toggle('is-favorite-active', newStateIsFavorite);
+            console.log(`[Timing] After toggling class. Button has active class: ${button.classList.contains('is-favorite-active')}`);
+            void button.offsetHeight;
+            console.log('[Timing] Forced reflow triggered.');
+        });
 
     } catch (error) {
         console.error('お気に入り処理中にエラー:', error);
-        alert('お気に入り操作中にエラーが発生しました。');
+        alert('お気に入り操作中にエラーが発生しました。\n' + error.message);
     }
 }
 
 export function initializeFavoriteButtons() {
     console.log('Initializing favorite button handler');
+    document.body.removeEventListener('click', handleFavoriteButtonClick);
     document.body.addEventListener('click', handleFavoriteButtonClick);
 } 

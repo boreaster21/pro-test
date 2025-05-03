@@ -94,24 +94,21 @@
     border: none;
     background: none;
     cursor: pointer;
+    transition: none;
 }
 
 .c-store-card__favorite-button svg {
     width: 1.5rem;
     height: 1.5rem;
-    fill: currentColor;
+    fill: #9ca3af;
 }
 
-.c-store-card__favorite-button[data-is-favorite="true"] {
-    color: #ef4444;
+.c-store-card__favorite-button.is-favorite-active svg {
+    fill: #ef4444;
 }
 
-.c-store-card__favorite-button[data-is-favorite="false"] {
-    color: #9ca3af;
-}
-
-.c-store-card__favorite-button:hover {
-    color: #ef4444;
+.c-store-card__favorite-button:not(.is-favorite-active):hover svg {
+    fill: #ef4444;
 }
 
 .u-mr-1 {

@@ -269,3 +269,24 @@ PHPUnit を使用した Feature テストが実装されています。
     ```bash
     php artisan test --filter=test_example_method
     ```
+
+## トラブルシューティング
+
+### パーミッションエラー
+
+Docker 環境では、ホストとコンテナ間でファイルの所有権が衝突し、パーミッションエラーが発生することがあります。以下に一般的な対処法を示します。
+
+*   **`npm run dev` で `EACCES: permission denied` エラーが出る場合:**
+    `src/node_modules` の所有権をホストユーザーに変更します。
+    ```bash
+    sudo chown -R $(id -u):$(id -g) src/node_modules
+    ```
+    その後、`src` ディレクトリで `npm run dev` を再試行してください。
+
+*   **アプリ表示時に `Please provide a valid cache path.` や書き込みエラーが出る場合:**
+    コンテナ内の `storage`, `bootstrap/cache` ディレクトリの所有者を Web サーバー (通常 `www-data`) に変更し、権限を修正します。
+    ```bash
+    docker compose exec php sh -c "chown -R www-data:www-data storage bootstrap/cache && chmod -R 775 storage bootstrap/cache"
+    ```
+
+    **注意:** `chmod 777` の使用はセキュリティリスクを高めるため、上記の方法を推奨します。

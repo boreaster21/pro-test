@@ -38,6 +38,7 @@ Route::middleware('auth')->group(function () {
         Route::post('/import/csv', [ImportController::class, 'importCsv'])->name('import.csv');
     });
 
+    Route::post('/favorites/{store}', [FavoriteController::class, 'store'])->name('favorites.store');
     Route::delete('/favorites/{store}', [FavoriteController::class, 'destroy'])->name('favorites.destroy');
 });
 

@@ -14,8 +14,12 @@
             <div class="c-review-form__rating-group">
                 <label for="rating" class="c-label c-review-form__label">体験を評価してください</label>
                 <div id="star-rating" class="c-review-form__rating-stars">
+                    @php
+                        $currentRating = old('rating', $review->rating ?? 0);
+                    @endphp
                     @for ($i = 1; $i <= 5; $i++)
-                        <span data-value="{{ $i }}" class="c-review-form__rating-star star">☆</span>
+                        <span data-value="{{ $i }}" class="c-review-form__rating-star">
+                        </span>
                     @endfor
                 </div>
                 <input type="hidden" name="rating" id="rating" class="c-review-form__rating-input" value="{{ old('rating', $review->rating ?? 0) }}">
