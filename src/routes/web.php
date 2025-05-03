@@ -38,18 +38,6 @@ Route::middleware('auth')->group(function () {
         Route::post('/import/csv', [ImportController::class, 'importCsv'])->name('import.csv');
     });
 
-    // Favorite Routes
-    Route::post('/favorites/{store}', [FavoriteController::class, 'store'])->name('favorites.store'); // Uncomment original route
-    // Route::post('/favorites/{store}', function (\App\Models\Store $store) { // Comment out or delete the closure route
-    //     // Check if authenticated
-    //     if (!auth()->check()) {
-    //         return response()->json(['message' => 'Unauthenticated.'], 401);
-    //     }
-    //     // Simple logic for testing
-    //     auth()->user()->favorites()->syncWithoutDetaching([$store->id]);
-    //     return response()->json(['status' => 'added_via_closure']);
-    // })->name('favorites.store');
-
     Route::delete('/favorites/{store}', [FavoriteController::class, 'destroy'])->name('favorites.destroy');
 });
 
