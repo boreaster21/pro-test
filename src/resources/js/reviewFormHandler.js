@@ -1,7 +1,3 @@
-/**
- * Initializes interactive elements for the review form,
- * including star rating, character counter, and image upload/drag & drop.
- */
 export function initializeReviewForm() {
     const starRatingDiv = document.getElementById('star-rating');
     const ratingInput = document.getElementById('rating');
@@ -9,13 +5,11 @@ export function initializeReviewForm() {
     const commentCounter = document.getElementById('comment-counter');
     const imageInput = document.getElementById('image');
     const imageFormatError = document.getElementById('image-format-error');
-    const submitButton = document.querySelector('.review-form button[type="submit"]'); // More specific selector
+    const submitButton = document.querySelector('.review-form button[type="submit"]');
     const fileNameDisplay = document.getElementById('file-name-display');
     const dropZone = document.getElementById('drop-zone');
 
-    // Exit if the essential form elements are not found
     if (!starRatingDiv || !ratingInput || !commentTextarea || !imageInput || !dropZone) {
-        // console.log('Review form elements not found, skipping initialization.');
         return;
     }
 
@@ -23,7 +17,6 @@ export function initializeReviewForm() {
 
     const stars = starRatingDiv.querySelectorAll('.c-review-form__rating-star');
 
-    // --- Star Rating Logic --- 
     function updateStars(value) {
         stars.forEach(star => {
             const starValue = parseInt(star.dataset.value);
@@ -56,7 +49,6 @@ export function initializeReviewForm() {
         updateStars(selectedRating);
     });
 
-    // --- Comment Counter Logic --- 
     if (commentCounter) {
         const maxChars = commentTextarea.getAttribute('maxlength') || 400;
         const updateCounter = () => {
@@ -64,10 +56,9 @@ export function initializeReviewForm() {
             commentCounter.textContent = `${currentLength} / ${maxChars} 文字`;
         };
         commentTextarea.addEventListener('input', updateCounter);
-        updateCounter(); // Initial update
+        updateCounter();
     }
 
-    // --- Image Upload & Drag/Drop Logic --- 
     function handleFile(file) {
         if (imageFormatError) imageFormatError.textContent = '';
         if (submitButton) submitButton.disabled = false;
@@ -81,14 +72,12 @@ export function initializeReviewForm() {
                 if (imageFormatError) imageFormatError.textContent = 'JPEGまたはPNG形式の画像を選択してください。';
                 if (submitButton) submitButton.disabled = true;
                 if (fileNameDisplay) fileNameDisplay.textContent = '';
-                imageInput.value = ''; // Clear the file input
+                imageInput.value = '';
                 return false;
             }
-            // File is valid
             if (dropZone) dropZone.classList.add('is-valid');
             return true;
         } else {
-            // No file selected/dropped
             imageInput.value = '';
             if (dropZone) dropZone.classList.remove('is-valid', 'is-dragging');
             return false;
@@ -125,12 +114,9 @@ export function initializeReviewForm() {
         if (files.length > 0) {
             const file = files[0];
             if (handleFile(file)) {
-                // Create a new FileList/DataTransfer object to assign to input
                 const dataTransfer = new DataTransfer();
                 dataTransfer.items.add(file);
                 imageInput.files = dataTransfer.files;
-                // Optionally trigger the 'change' event manually if needed
-                // imageInput.dispatchEvent(new Event('change', { bubbles: true }));
             }
         }
     });

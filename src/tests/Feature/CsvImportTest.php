@@ -3,12 +3,11 @@
 namespace Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
-// use Illuminate\Foundation\Testing\WithFaker; // 不要なら削除
 use Tests\TestCase;
 use App\Models\User;
 use App\Models\Store;
 use Illuminate\Http\UploadedFile;
-use Illuminate\Support\Facades\Storage; 
+use Illuminate\Support\Facades\Storage;
 
 class CsvImportTest extends TestCase
 {
@@ -79,7 +78,7 @@ class CsvImportTest extends TestCase
                              'csv_file' => $csvFile,
                          ]);
 
-        $response->assertStatus(403); // Forbidden
+        $response->assertStatus(403);
         $this->assertDatabaseCount('stores', 0);
     }
 

@@ -13,7 +13,13 @@
 }
 
 .c-store-card__content {
-    padding: 1rem;
+    padding: 0.75rem;
+}
+
+@media (min-width: 640px) {
+    .c-store-card__content {
+        padding: 1rem;
+    }
 }
 
 .c-store-card__header {
@@ -25,9 +31,15 @@
 }
 
 .c-store-card__name {
-    font-size: 1.125rem;
+    font-size: 1rem;
     font-weight: 700;
     margin-right: 0.5rem;
+}
+
+@media (min-width: 640px) {
+    .c-store-card__name {
+        font-size: 1.125rem;
+    }
 }
 
 .c-store-card__rating {

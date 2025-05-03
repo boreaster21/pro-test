@@ -15,6 +15,7 @@
 @import 'object/component/_alert.css';
 @import 'object/component/_navigation.css';
 @import 'object/component/_dropdown.css';
+@import 'object/component/_modal.css';
 
 @import 'object/project/_guest-layout.css';
 @import 'object/project/_store-index.css';

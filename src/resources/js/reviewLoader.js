@@ -1,8 +1,3 @@
-/**
- * Escapes HTML special characters in a string.
- * @param {string} unsafe The string to escape.
- * @returns {string} The escaped string.
- */
 function escapeHtml(unsafe) {
     if (!unsafe) return '';
     return unsafe
@@ -13,16 +8,11 @@ function escapeHtml(unsafe) {
         .replace(/'/g, "&#039;");
 }
 
-/**
- * Initializes the review loading functionality for the store details page.
- */
 export function initializeReviewLoader() {
     const loadButton = document.getElementById('load-all-reviews');
     const reviewsContainer = document.getElementById('reviews-container');
 
-    // Check if the button and container exist
     if (!loadButton || !reviewsContainer) {
-        // console.log('Review loader elements not found, skipping initialization.');
         return;
     }
 
@@ -35,8 +25,7 @@ export function initializeReviewLoader() {
         this.disabled = true;
         this.textContent = '読み込み中...';
 
-        // Clear previous messages or reviews (target BEM classes or IDs)
-        const existingNoReviewsMessage = reviewsContainer.querySelector('#no-reviews-message, .p-store-show__info-text, .c-input-error'); // Updated selectors
+        const existingNoReviewsMessage = reviewsContainer.querySelector('#no-reviews-message, .p-store-show__info-text, .c-input-error');
         if (existingNoReviewsMessage) {
             existingNoReviewsMessage.remove();
         }
@@ -52,12 +41,11 @@ export function initializeReviewLoader() {
             if (reviews.length > 0) {
                 reviews.forEach(review => {
                     const reviewElement = document.createElement('div');
-                    reviewElement.className = 'c-review-item'; // Use BEM class
+                    reviewElement.className = 'c-review-item';
                     const ratingStars = '★'.repeat(review.rating) + '☆'.repeat(5 - review.rating);
 
-                    // Use BEM classes for links/buttons
                     const editButtonHtml = review.can_update
-                        ? `<a href="/reviews/${review.review_id}/edit" class="c-review-item__action-link c-link c-link--sm">編集</a>` // Added link classes
+                        ? `<a href="/reviews/${review.review_id}/edit" class="c-review-item__action-link c-link c-link--sm">編集</a>`
                         : '';
 
                     const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
@@ -84,19 +72,17 @@ export function initializeReviewLoader() {
                         `;
                     reviewsContainer.appendChild(reviewElement);
                 });
-                // Disable button after successful load, keep initial text
                 this.textContent = initialButtonText;
-                this.disabled = true; // Keep button disabled after loading
+                this.disabled = true;
             } else {
                 reviewsContainer.innerHTML = '<p class="p-store-show__info-text" id="no-reviews-message">まだ口コミはありません。</p>';
                 this.textContent = initialButtonText;
-                this.disabled = true; // Keep button disabled even if no reviews
+                this.disabled = true;
             }
 
         } catch (error) {
             console.error('Error fetching reviews:', error);
             reviewsContainer.innerHTML = '<p class="c-input-error">口コミの読み込み中にエラーが発生しました。</p>';
-            // Re-enable button on error to allow retry
             this.disabled = false;
             this.textContent = initialButtonText;
         }

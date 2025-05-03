@@ -16,7 +16,6 @@
         <div class="p-guest-layout">
             <div class="p-guest-layout__logo">
                 <a href="/">
-                    {{-- <x-application-logo class="w-20 h-20 fill-current text-gray-500" /> --}}
                     <span class="p-guest-layout__logo-text">Rese</span>
                 </a>
             </div>

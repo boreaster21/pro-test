@@ -42,6 +42,6 @@ class Store extends Model
 
         $this->average_rating = round($averageRating, 1);
         $this->review_count = $reviewCount;
-        $this->saveQuietly(); 
+        $this->saveQuietly();
     }
 }

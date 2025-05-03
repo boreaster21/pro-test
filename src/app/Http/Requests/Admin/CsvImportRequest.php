@@ -7,23 +7,16 @@ use Illuminate\Support\Facades\Auth;
 
 class CsvImportRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     */
+
     public function authorize(): bool
     {
         return Auth::check() && Auth::user()->isAdmin();
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
-     */
     public function rules(): array
     {
         return [
-            'csv_file' => ['required', 'file', 'mimes:csv,txt', 'max:5120'], // 例: 5MBまで
+            'csv_file' => ['required', 'file', 'mimes:csv,txt', 'max:5120'],
         ];
     }
     public function messages(): array

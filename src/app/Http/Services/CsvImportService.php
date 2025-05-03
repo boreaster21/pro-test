@@ -14,12 +14,10 @@ use Exception;
 class CsvImportService
 {
     /**
-     * CSVファイルから店舗情報をインポートする
-     *
-     * @param UploadedFile $file
-     * @return int インポートされたレコード数
-     * @throws ValidationException バリデーションエラーが発生した場合
-     * @throws Exception その他のエラーが発生した場合
+     * @param UploadedFile 
+     * @return int 
+     * @throws ValidationException 
+     * @throws Exception 
      */
     public function importStoresFromCsv(UploadedFile $file): int
     {
@@ -34,7 +32,7 @@ class CsvImportService
             $records = Statement::create()->process($csv);
 
             foreach ($records as $index => $record) {
-                $rowNumber = $index + 2; // CSVの行番号 (ヘッダーを除き、1ベース)
+                $rowNumber = $index + 2;
                 $trimmedRecord = array_map('trim', $record);
 
                 $validator = Validator::make($trimmedRecord, [
@@ -76,16 +74,13 @@ class CsvImportService
             }
 
             if (!empty($validationErrors)) {
-                // バリデーションエラーがある場合は ValidationException をスロー
                 throw ValidationException::withMessages($validationErrors);
             }
 
             if (empty($storesToInsert)) {
-                // 有効なデータがない場合 (例: 空のCSVや全行エラー)
                 return 0;
             }
 
-            // トランザクション内で挿入
             DB::transaction(function () use ($storesToInsert) {
                 Store::insert($storesToInsert);
             });
@@ -93,11 +88,9 @@ class CsvImportService
             return count($storesToInsert);
 
         } catch (ValidationException $e) {
-            // バリデーション例外はそのままスローしてコントローラーで処理
             throw $e;
         } catch (Exception $e) {
-            // その他の予期せぬエラー
-            report($e); // エラーをログに記録
+            report($e);
             throw new Exception('CSVファイルの処理中に予期せぬエラーが発生しました。');
         }
     }

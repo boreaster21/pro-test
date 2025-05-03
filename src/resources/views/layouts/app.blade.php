@@ -27,50 +27,14 @@
                         <div class="l-header__nav">
                             @if(Route::currentRouteName() == 'stores.index')
                             <div class="l-header__search-sort-bar">
-                                <form id="search-form" action="{{ route('stores.index') }}" method="GET" class="l-header__search-form">
-                                    <div>
-                                        <label for="sort" class="sr-only">並び替え</label>
-                                        <select name="sort" id="sort" onchange="document.getElementById('search-form').submit()">
-                                            <option value="random" {{ request('sort', 'random') == 'random' ? 'selected' : '' }}>並び替え: ランダム</option>
-                                            <option value="rating_desc" {{ request('sort') == 'rating_desc' ? 'selected' : '' }}>評価が高い順</option>
-                                            <option value="rating_asc" {{ request('sort') == 'rating_asc' ? 'selected' : '' }}>評価が低い順</option>
-                                            @auth
-                                            <option value="favorites" {{ request('sort') == 'favorites' ? 'selected' : '' }}>お気に入り</option>
-                                            @endauth
-                                        </select>
-                                    </div>
-                                    <span class="l-header__divider">|</span>
-                                    <div>
-                                        <label for="region" class="sr-only">エリア</label>
-                                        <select name="region" id="region" onchange="document.getElementById('search-form').submit()">
-                                            <option value="">All area</option>
-                                            <option value="東京都" {{ request('region') == '東京都' ? 'selected' : '' }}>東京都</option>
-                                            <option value="大阪府" {{ request('region') == '大阪府' ? 'selected' : '' }}>大阪府</option>
-                                            <option value="福岡県" {{ request('region') == '福岡県' ? 'selected' : '' }}>福岡県</option>
-                                        </select>
-                                    </div>
-                                    <span class="l-header__divider">|</span>
-                                    <div>
-                                        <label for="genre" class="sr-only">ジャンル</label>
-                                        <select name="genre" id="genre" onchange="document.getElementById('search-form').submit()">
-                                            <option value="">All genre</option>
-                                            <option value="寿司" {{ request('genre') == '寿司' ? 'selected' : '' }}>寿司</option>
-                                            <option value="焼肉" {{ request('genre') == '焼肉' ? 'selected' : '' }}>焼肉</option>
-                                            <option value="イタリアン" {{ request('genre') == 'イタリアン' ? 'selected' : '' }}>イタリアン</option>
-                                            <option value="居酒屋" {{ request('genre') == '居酒屋' ? 'selected' : '' }}>居酒屋</option>
-                                            <option value="ラーメン" {{ request('genre') == 'ラーメン' ? 'selected' : '' }}>ラーメン</option>
-                                        </select>
-                                    </div>
-                                    <span class="l-header__divider">|</span>
-                                    <div class="l-header__search-input-wrapper">
-                                        <label for="keyword" class="sr-only">キーワード検索</label>
-                                        <span class="l-header__search-icon">
-                                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M16.65 10.35a6.3 6.3 0 11-12.6 0 6.3 6.3 0 0112.6 0z"></path></svg>
-                                        </span>
-                                        <input type="text" name="keyword" id="keyword" value="{{ request('keyword') }}" placeholder="Search ..." onchange="document.getElementById('search-form').submit()">
-                                    </div>
-                                </form>
+                                @include('layouts._search-sort-form')
                             </div>
+                            <button type="button" class="l-header__filter-trigger js-modal-trigger">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="l-header__filter-icon">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75" />
+                                  </svg>
+                                <span class="l-header__filter-text">絞り込み</span>
+                            </button>
                             @endif
 
                             <div class="l-header__auth-links">
@@ -111,6 +75,26 @@
                 </div>
             </main>
         </div>
+
+        {{-- モーダルウィンドウ --}}
+        @if(Route::currentRouteName() == 'stores.index')
+        <div id="search-sort-modal" class="c-modal js-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+            <div class="c-modal__overlay" tabindex="-1" data-micromodal-close></div>
+            <div class="c-modal__container">
+                <div class="c-modal__header">
+                    <h2 class="c-modal__title" id="modal-title">
+                        絞り込み・並び替え
+                    </h2>
+                    <button class="c-modal__close js-modal-close" aria-label="閉じる"></button>
+                </div>
+                <div class="c-modal__body">
+                    {{-- モーダル内にフォームをインクルード --}}
+                    @include('layouts._search-sort-form', ['is_modal' => true]) {{-- is_modal 変数を渡す --}}
+                </div>
+            </div>
+        </div>
+        @endif
+
         @stack('scripts')
     </body>
 </html>

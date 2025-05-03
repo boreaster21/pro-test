@@ -302,7 +302,7 @@ class ReviewTest extends TestCase
         $response->assertStatus(200);
         $response->assertViewIs('reviews.edit');
         $response->assertSee($review->comment);
-        $response->assertSee('value="' . $review->rating . '"' , false);
+        $response->assertSee('value="' . $review->rating . '"', false);
     }
 
     public function test_authenticated_user_cannot_view_edit_page_for_others_review(): void

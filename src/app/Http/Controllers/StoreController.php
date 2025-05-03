@@ -96,7 +96,7 @@ class StoreController extends Controller
                          ->latest()
                          ->get()
                          ->map(function ($review) use ($user) {
-                            $review->image_url_full = $review->image_url; 
+                            $review->image_url_full = $review->image_url;
                             $review->user_name_display = $review->user ? $review->user->name : '匿名ユーザー';
                             $review->created_at_formatted = $review->created_at->format('Y/m/d H:i');
                             $review->review_id = $review->id;

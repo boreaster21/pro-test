@@ -37,7 +37,6 @@ class ImportController extends Controller
             foreach ($records as $index => $record) {
                 $rowNumber = $index + 2;
 
-                // Trim whitespace from each field in the record
                 $trimmedRecord = array_map('trim', $record);
 
                 $validator = Validator::make($trimmedRecord, [

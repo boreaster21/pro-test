@@ -15,11 +15,9 @@
 /src/bootstrap/cache/*.php
 /src/bootstrap/cache/*.php.meta
 
-# Docker
 /docker/mysql/data/
 /src/vendor/
 
-# IDE specific files
 /.idea
 /.vscode/
 *.iml

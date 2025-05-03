@@ -42,9 +42,15 @@
 
 .c-review-form__rating-stars {
     display: flex;
-    font-size: 2rem;
+    font-size: 1.5rem;
     color: #9ca3af;
     cursor: pointer;
+}
+
+@media (min-width: 640px) {
+    .c-review-form__rating-stars {
+        font-size: 2rem;
+    }
 }
 
 .c-review-form__rating-star {
