@@ -28,7 +28,7 @@
 .p-guest-layout__card {
     width: 100%;
     margin-top: 1.5rem;
-    padding: 1rem;
+    padding: 1.5rem;
     background-color: #fff;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     overflow: hidden;
@@ -37,8 +37,8 @@
 @media (min-width: 640px) {
 
     .p-guest-layout__card {
-        max-width: 28rem;
+        max-width: 26rem;
         border-radius: 0.5rem;
-        padding: 1.5rem;
+        padding: 2rem;
     }
 }

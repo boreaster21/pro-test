@@ -24,6 +24,11 @@
                         <span class="u-text-gray-600">({{ $store->review_count }}件)</span>
                     </span>
                 @else
+                    <span class="c-store-card__rating-stars c-store-card__rating-stars--no-rating">
+                        @for ($i = 1; $i <= 5; $i++)
+                            ☆
+                        @endfor
+                    </span>
                     <span class="c-store-card__rating-text--no-rating">評価なし</span>
                 @endif
             </span>

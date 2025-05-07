@@ -5,6 +5,17 @@
         </h2>
     </x-slot>
 
+    @if (session('success'))
+        <div class="c-alert c-alert--success u-mb-4"> 
+            {{ session('success') }}
+        </div>
+    @endif
+    @if (session('error')) 
+        <div class="c-alert c-alert--error u-mb-4">
+            {{ session('error') }}
+        </div>
+    @endif
+
     <div>
         <div class="p-store-show__grid">
 
@@ -92,9 +103,13 @@
                         @else
                             @auth
                                 @if(Auth::user()->reviews()->where('store_id', $store->id)->exists())
-                                    <p class="p-store-show__info-text">この店舗には既に口コミを投稿済みです。</p>
+                                    <div class="c-alert c-alert--info u-mb-0">
+                                        <p>この店舗には既に口コミを投稿済みです。</p>
+                                    </div>
                                 @else
-                                    <p class="p-store-show__info-text">この店舗への口コミは現在投稿できません。(予約日時をご確認ください)</p>
+                                    <div class="c-alert c-alert--info u-mb-0">
+                                        <p>この店舗への口コミは現在投稿できません。(来店日時をご確認ください)</p>
+                                    </div>
                                 @endif
                             @endauth
                         @endif

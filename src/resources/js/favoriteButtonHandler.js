@@ -28,8 +28,13 @@ async function handleFavoriteButtonClick(event) {
         });
 
         if (!response.ok) {
-            const errorData = await response.json().catch(() => ({}));
-            throw new Error(`リクエスト失敗: ${response.status}`);
+            const errorData = await response.json().catch(() => ({ message: '不明なエラーが発生しました。' }));
+            console.error(`Favorite request failed: ${response.status}`, errorData);
+            button.classList.add('is-error');
+            setTimeout(() => {
+                button.classList.remove('is-error');
+            }, 2000);
+            return;
         }
 
         const data = await response.json();
@@ -42,7 +47,11 @@ async function handleFavoriteButtonClick(event) {
         });
 
     } catch (error) {
-        alert('お気に入り操作中にエラーが発生しました。\n' + error.message);
+        console.error('お気に入り操作中に予期せぬエラーが発生しました。', error);
+        button.classList.add('is-error');
+        setTimeout(() => {
+            button.classList.remove('is-error');
+        }, 2000);
     }
 }
 

@@ -19,11 +19,17 @@ export function initializeReviewLoader() {
     console.log('Initializing review loader...');
 
     const initialButtonText = loadButton.textContent;
+    const spinnerSvg = `
+        <svg class="c-spinner" viewBox="0 0 50 50">
+            <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
+        </svg>
+    `;
 
     loadButton.addEventListener('click', async function () {
         const apiUrl = this.dataset.apiUrl;
+        const originalButtonHTML = this.innerHTML;
         this.disabled = true;
-        this.textContent = '読み込み中...';
+        this.innerHTML = `${spinnerSvg} 読み込み中...`;
 
         const existingNoReviewsMessage = reviewsContainer.querySelector('#no-reviews-message, .p-store-show__info-text, .c-input-error');
         if (existingNoReviewsMessage) {
@@ -34,7 +40,14 @@ export function initializeReviewLoader() {
         try {
             const response = await fetch(apiUrl);
             if (!response.ok) {
-                throw new Error('口コミの読み込みに失敗しました。');
+                let errorInfo = `ステータス: ${response.status}`;
+                try {
+                    const errorData = await response.json();
+                    errorInfo += `, メッセージ: ${errorData.message || 'サーバーから詳細なエラーメッセージは提供されませんでした。'}`;
+                } catch (e) {
+                    errorInfo += ', サーバーからの応答が不正です。';
+                }
+                throw new Error(`口コミの読み込みに失敗しました。${errorInfo}`);
             }
             const reviews = await response.json();
 
@@ -72,19 +85,24 @@ export function initializeReviewLoader() {
                         `;
                     reviewsContainer.appendChild(reviewElement);
                 });
-                this.textContent = initialButtonText;
+                this.innerHTML = initialButtonText;
                 this.disabled = true;
             } else {
                 reviewsContainer.innerHTML = '<p class="p-store-show__info-text" id="no-reviews-message">まだ口コミはありません。</p>';
-                this.textContent = initialButtonText;
+                this.innerHTML = initialButtonText;
                 this.disabled = true;
             }
 
         } catch (error) {
             console.error('Error fetching reviews:', error);
-            reviewsContainer.innerHTML = '<p class="c-input-error">口コミの読み込み中にエラーが発生しました。</p>';
+            reviewsContainer.innerHTML = `
+                <div class="c-alert c-alert--error">
+                    <p class="c-alert__title">エラー</p>
+                    <p>${escapeHtml(error.message)}</p>
+                    <p>時間をおいて再度お試しください。</p>
+                </div>`;
             this.disabled = false;
-            this.textContent = initialButtonText;
+            this.innerHTML = originalButtonHTML;
         }
     });
 } 

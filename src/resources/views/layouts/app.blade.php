@@ -14,6 +14,11 @@
 
     </head>
     <body>
+        <div id="page-loading-overlay" class="c-page-loading-overlay">
+            <div class="c-page-loading-overlay__spinner">
+                <svg class="c-spinner" viewBox="0 0 50 50"><circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle></svg>
+            </div>
+        </div>
         <div class="l-page-wrapper">
             <header class="l-header">
                 <div class="l-container">
@@ -32,7 +37,7 @@
                             <button type="button" class="l-header__filter-trigger js-modal-trigger">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="l-header__filter-icon">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75" />
-                                  </svg>
+                                </svg>
                                 <span class="l-header__filter-text">絞り込み</span>
                             </button>
                             @endif
@@ -79,7 +84,7 @@
         {{-- モーダルウィンドウ --}}
         @if(Route::currentRouteName() == 'stores.index')
         <div id="search-sort-modal" class="c-modal js-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-            <div class="c-modal__overlay" tabindex="-1" data-micromodal-close></div>
+            <div class="c-modal__overlay" tabindex="-1" data-micromodal-close></div> 
             <div class="c-modal__container">
                 <div class="c-modal__header">
                     <h2 class="c-modal__title" id="modal-title">
@@ -88,8 +93,7 @@
                     <button class="c-modal__close js-modal-close" aria-label="閉じる"></button>
                 </div>
                 <div class="c-modal__body">
-                    {{-- モーダル内にフォームをインクルード --}}
-                    @include('layouts._search-sort-form', ['is_modal' => true]) {{-- is_modal 変数を渡す --}}
+                    @include('layouts._search-sort-form', ['is_modal' => true])
                 </div>
             </div>
         </div>

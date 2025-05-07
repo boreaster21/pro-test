@@ -27,6 +27,8 @@
     border-color: transparent;
     color: #fff;
     --c-button-focus-ring-color: #4338ca;
+    padding: 0.65rem 1.25rem;
+    font-size: 0.875rem;
 }
 
 .c-button--primary:hover {
@@ -77,3 +79,41 @@
 }
 
 .c-button--secondary:focus {}
+
+.c-spinner {
+    animation: rotate 2s linear infinite;
+    width: 1.2em;
+    height: 1.2em;
+    margin-right: 0.5em;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.c-spinner .path {
+    stroke: #2563eb;
+    stroke-linecap: round;
+    animation: dash 1.5s ease-in-out infinite;
+}
+
+@keyframes rotate {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes dash {
+    0% {
+        stroke-dasharray: 1, 150;
+        stroke-dashoffset: 0;
+    }
+
+    50% {
+        stroke-dasharray: 90, 150;
+        stroke-dashoffset: -35;
+    }
+
+    100% {
+        stroke-dasharray: 90, 150;
+        stroke-dashoffset: -124;
+    }
+}
